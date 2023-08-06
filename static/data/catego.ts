@@ -11,13 +11,11 @@ interface Ans {
 }
 
 interface Category {
-  [key: string]: {
-    id: string;
-    q: string;
-    ans: Ans;
-    v: string;
-    i: number;
-  };
+  id: string;
+  q: string;
+  ans: Ans;
+  v: string;
+  i: number;
 }
 
 interface Catego {

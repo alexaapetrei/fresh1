@@ -1,5 +1,6 @@
 import { JSX } from "preact";
 import { IS_BROWSER } from "$fresh/runtime.ts";
+import catego from "../static/data/catego.ts";
 
 export function Chose() {
   return (
@@ -8,7 +9,7 @@ export function Chose() {
         Chose your starter
       </h1>
       <div class="grid sm:grid-cols-2 lg:grid-cols-6 gap-4">
-        {["a", "b", "c", "d", "e", "r"].map((c) => (
+        {Object.keys(catego).map((c) => (
           <a
             class="p-5 rounded-md bg-slate-50"
             href={`/categoria/${c}`}

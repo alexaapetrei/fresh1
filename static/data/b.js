@@ -11637,7 +11637,7 @@ const transf = b.map((x) => {
     q: x.q,
     ans: { a: x.a, b: x.b, c: x.c },
     v: x.v,
-    i: x.i,
+    i: parseInt(x.i),
   };
 });
 
