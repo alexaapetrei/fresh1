@@ -6,11 +6,11 @@ import e from "./e.js";
 import r from "./r.js";
 import t from "./t.js";
 
-interface Ans {
+export interface Ans {
   [key: string]: string;
 }
 
-interface Category {
+export interface Category {
   id: string;
   q: string;
   ans: Ans;
@@ -18,7 +18,7 @@ interface Category {
   i: number;
 }
 
-interface Catego {
+export interface Catego {
   [key: string]: Category[];
 }
 
