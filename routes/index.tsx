@@ -1,10 +1,7 @@
 import { Head } from "$fresh/runtime.ts";
-import { useSignal } from "@preact/signals";
-import Counter from "../islands/Counter.tsx";
 import { Chose } from "../components/Chose.tsx";
 
 export default function Home() {
-  const count = useSignal(69);
   return (
     <>
       <Head>

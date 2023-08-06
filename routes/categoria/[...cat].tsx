@@ -31,10 +31,6 @@ export default function Greet(props: PageProps) {
       </div>
 
       <div class="basis-3/4">
-        <h2 class="text-2xl text-yellow-200 font-bold">
-          Categoria : {categoria}
-        </h2>
-
         <Chestionar
           next={next}
           prev={prev}
