@@ -1,6 +1,7 @@
 import { Head } from "$fresh/runtime.ts";
 import { useSignal } from "@preact/signals";
 import Counter from "../islands/Counter.tsx";
+import { Chose } from "../components/Chose.tsx";
 
 export default function Home() {
   const count = useSignal(69);
@@ -93,11 +94,8 @@ export default function Home() {
             alt="the fresh logo: a sliced lemon dripping with juice"
           />
           <h1 class="text-4xl font-bold">Welcome to fresh bear</h1>
-          <p class="my-4">
-            We is amm ... running fresh
-          </p>
-          <Counter count={count} />
         </div>
+        <Chose />
       </div>
     </>
   );
