@@ -8,6 +8,8 @@ export default function Greet(props: PageProps) {
     number,
   ];
 
+  //where fuckup ?
+
   const chosen = catego[categoria][numarul];
 
   if (!categoria || !chosen) return <Chose />;
