@@ -1,5 +1,5 @@
 import { Head } from "$fresh/runtime.ts";
-import { Chose } from "../components/Chose.tsx";
+import { Chose } from "../islands/Chose.tsx";
 
 export default function Home() {
   return (

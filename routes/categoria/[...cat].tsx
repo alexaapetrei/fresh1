@@ -1,6 +1,6 @@
 import { ComponentChildren, JSX } from "preact";
 import { PageProps } from "$fresh/server.ts";
-import { Chose } from "../../components/Chose.tsx";
+import { Chose } from "../../islands/Chose.tsx";
 import catego from "../../static/data/catego.ts";
 import { useSignal } from "@preact/signals";
 import Chestionar from "../../islands/Chestionar.tsx";

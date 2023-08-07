@@ -1,6 +1,7 @@
 import type { Signal } from "@preact/signals";
 import type { Category } from "../static/data/catego.ts";
 import Ans from "../components/Ans.tsx";
+import { useEffect, useState } from "preact/hooks";
 
 interface CounterProps {
   active: Signal<string[]>;
@@ -11,17 +12,31 @@ interface CounterProps {
   prev: number;
 }
 
+type localState = { corecte: string[]; gresite: string[] };
+
 export default function Chestionar(
   { active, checked, chosen, categoria, next, prev }: CounterProps,
 ) {
+  const [state, setState] = useState<localState>({ corecte: [], gresite: [] });
+
+  useEffect(() => {
+    const localState = localStorage.getItem("state");
+    if (localState) setState(JSON.parse(localState));
+  }, []);
+
   const verifica = () => {
     checked.value = true;
-    if (active.value.toString() == chosen.v) {
-      console.log("RIGHT ___ YAY");
-    } else {
-      console.log("WRONG nooooo ");
-    }
+
+    const key = active.value.toString() === chosen.v ? "corecte" : "gresite";
+    const newState = { ...state, [key]: [...state[key], chosen.id] };
+
+    setState(newState);
+    localStorage.setItem("state", JSON.stringify(newState));
+    console.log(
+      active.value.toString() === chosen.v ? "RIGHT ___ YAY" : "WRONG nooooo ",
+    );
   };
+
   return (
     <>
       <h2 class="text-2xl text-yellow-200 font-bold">
