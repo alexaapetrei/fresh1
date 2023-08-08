@@ -91,8 +91,8 @@ addEventListener("install", (event) => {
 });
 
 async function registerCache() {
-  const cache = await caches.open("foo-bar");
-  const urlsToCache = ["/", "/favicon.ico", "logo.svg"];
+  const cache = await caches.open("FITST");
+  const urlsToCache = ["/", "/favicon.ico"];
   console.info("Service worker caching all");
   await cache.addAll(urlsToCache);
 }
