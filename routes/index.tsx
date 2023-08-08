@@ -46,7 +46,7 @@ export default function Home() {
             height="128"
             alt="the fresh logo: a sliced lemon dripping with juice"
           />
-          <h1 class="text-4xl font-bold">Welcome to fresh bear</h1>
+          <h1 class="text-4xl font-bold">Welcome to fresh bear INSTALABLE</h1>
         </div>
         <Chose />
       </div>

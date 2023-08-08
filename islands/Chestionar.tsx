@@ -2,6 +2,7 @@ import type { Signal } from "@preact/signals";
 import type { Category } from "../static/data/catego.ts";
 import Ans from "../components/Ans.tsx";
 import { useEffect, useState } from "preact/hooks";
+import catego from "../static/data/catego.ts";
 
 interface CounterProps {
   active: Signal<string[]>;
@@ -18,7 +19,18 @@ export default function Chestionar(
   { active, checked, chosen, categoria, next, prev }: CounterProps,
 ) {
   const [state, setState] = useState<localState>({ corecte: [], gresite: [] });
-
+  // THIS IS HOW TO GENERATE THE URL LIST FOR THE CACHING
+  // const allTheKeys = Object.keys(catego);
+  // const allTheQuestions = allTheKeys.map((k) =>
+  //   catego[k].map((c, i) => `/categoria/${k}/${i}`)
+  // ).flat();
+  // const allTheImmages = allTheKeys.map((k) =>
+  //   catego[k].map((c, i) => {
+  //     if (c.i) return `/img/${k}/${c.i}.jpg`;
+  //   })
+  // ).flat().filter(Boolean);
+  // console.log("CATEGO", allTheQuestions);
+  // console.log("IMAGES", allTheImmages);
   useEffect(() => {
     const localState = localStorage.getItem("state");
     if (localState) setState(JSON.parse(localState));
