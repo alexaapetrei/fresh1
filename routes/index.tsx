@@ -1,61 +1,27 @@
 import { Head } from "$fresh/runtime.ts";
 import { Chose } from "../islands/Chose.tsx";
 
+<script type="module">
+  import
+  "https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate/dist/pwa-update.js"; const
+  el = document.createElement("pwa-update"); document.body.appendChild(el);
+</script>;
+
 export default function Home() {
   return (
     <>
       <Head>
         <title>The Bear 2023</title>
+
         <link
-          rel="apple-touch-icon"
-          sizes="57x57"
-          href="/apple-icon-57x57.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="60x60"
-          href="/apple-icon-60x60.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="72x72"
-          href="/apple-icon-72x72.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="76x76"
-          href="/apple-icon-76x76.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="114x114"
-          href="/apple-icon-114x114.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="120x120"
-          href="/apple-icon-120x120.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="144x144"
-          href="/apple-icon-144x144.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="152x152"
-          href="/apple-icon-152x152.png"
+          crossOrigin="use-credentials"
+          rel="manifest"
+          href="/site.webmanifest"
         />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/apple-icon-180x180.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="192x192"
-          href="/android-icon-192x192.png"
+          href="/apple-touch-icon.png"
         />
         <link
           rel="icon"
@@ -66,19 +32,15 @@ export default function Home() {
         <link
           rel="icon"
           type="image/png"
-          sizes="96x96"
-          href="/favicon-96x96.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
           sizes="16x16"
           href="/favicon-16x16.png"
         />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-        <meta name="theme-color" content="#ffffff"></meta>
+        <link rel="manifest" href="/site.webmanifest"></link>
+        {/* <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#555555"></link> */}
+        <meta name="apple-mobile-web-app-title" content="UrsSur"></meta>
+        <meta name="application-name" content="UrsSur"></meta>
+        <meta name="msapplication-TileColor" content="#82ff89"></meta>
+        <meta name="theme-color" content="#82ff89"></meta>
         <link rel="icon" href="/bear2023.svg"></link>
       </Head>
       <div class="px-4 py-8 mx-auto bg-slate-100">
