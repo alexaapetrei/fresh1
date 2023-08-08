@@ -1,6 +1,6 @@
 # Deno Fresh project
 
-Will immplement PWA -
+Immplemented PWA with help from-
 https://ericdavidsmith.com/blog/deno/deno-fresh-pwa-progressive-web-app
 
 ### Online at
