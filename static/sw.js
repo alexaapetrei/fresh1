@@ -92,7 +92,13 @@ addEventListener("install", (event) => {
 
 async function registerCache() {
   const cache = await caches.open("FITST");
-  const urlsToCache = ["/", "/favicon.ico"];
+  const urlsToCache = [
+    "/",
+    "/favicon.ico",
+    "/categoria/c/0",
+    "/categoria/c/1",
+    "/categoria/c/2",
+  ];
   console.info("Service worker caching all");
   await cache.addAll(urlsToCache);
 }
@@ -107,7 +113,7 @@ async function handleCache(networkEvent) {
     return await fetch(networkEvent.request);
   } catch (error) {
     console.info(`${error} | Service Worker using cache`);
-    const cache = await caches.open("foo-bar");
+    const cache = await caches.open("FIRST");
     return cache.match(networkEvent.request);
   }
 }
