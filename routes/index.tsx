@@ -1,12 +1,6 @@
 import { Head } from "$fresh/runtime.ts";
 import { Chose } from "../islands/Chose.tsx";
 
-<script type="module">
-  import
-  "https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate/dist/pwa-update.js"; const
-  el = document.createElement("pwa-update"); document.body.appendChild(el);
-</script>;
-
 export default function Home() {
   return (
     <>
@@ -42,6 +36,12 @@ export default function Home() {
         <meta name="msapplication-TileColor" content="#82ff89"></meta>
         <meta name="theme-color" content="#82ff89"></meta>
         <link rel="icon" href="/bear2023.svg"></link>
+        <script type="module">
+          import
+          "https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate/dist/pwa-update.js";
+          const el = document.createElement("pwa-update");
+          document.body.appendChild(el);
+        </script>;
       </Head>
       <div class="px-4 py-8 mx-auto bg-slate-100">
         <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">

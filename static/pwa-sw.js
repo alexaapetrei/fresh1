@@ -2,51 +2,6 @@ importScripts(
   "https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js",
 );
 
-const precacheAssets = [
-  { url: "/", revision: "v1" },
-];
-
-workbox.precaching.precacheAndRoute(precacheAssets);
-
-// Runtime caching for categories
-workbox.routing.registerRoute(
-  ({ url }) => url.pathname.startsWith("/categoria/"),
-  new workbox.strategies.StaleWhileRevalidate({
-    cacheName: "categoria",
-    plugins: [
-      new workbox.expiration.ExpirationPlugin({
-        maxEntries: 6000,
-      }),
-    ],
-  }),
-);
-
-// Runtime caching for images
-workbox.routing.registerRoute(
-  ({ url }) => url.pathname.startsWith("/img/"),
-  new workbox.strategies.StaleWhileRevalidate({
-    cacheName: "images",
-    plugins: [
-      new workbox.expiration.ExpirationPlugin({
-        maxEntries: 6000,
-      }),
-    ],
-  }),
-);
-
-// Runtime caching for data
-workbox.routing.registerRoute(
-  ({ url }) => url.pathname.startsWith("/data/"),
-  new workbox.strategies.StaleWhileRevalidate({
-    cacheName: "data",
-    plugins: [
-      new workbox.expiration.ExpirationPlugin({
-        maxEntries: 30,
-      }),
-    ],
-  }),
-);
-
 const HTML_CACHE = "html";
 const JS_CACHE = "javascript";
 const STYLE_CACHE = "stylesheets";
@@ -101,7 +56,19 @@ workbox.routing.registerRoute(
     cacheName: IMAGE_CACHE,
     plugins: [
       new workbox.expiration.ExpirationPlugin({
-        maxEntries: 15,
+        maxEntries: 50,
+      }),
+    ],
+  }),
+);
+
+workbox.routing.registerRoute(
+  ({ url }) => url.pathname.startsWith("/img/"),
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: "questionImages",
+    plugins: [
+      new workbox.expiration.ExpirationPlugin({
+        maxEntries: 6000,
       }),
     ],
   }),
