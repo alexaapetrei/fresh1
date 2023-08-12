@@ -39,6 +39,7 @@ export default function Home() {
       <div class="px-4 py-8 mx-auto bg-slate-100">
         <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
           <img
+            data-fresh-disable-lock
             class="my-6"
             src="/bear2023.svg"
             width="128"

@@ -2956,6 +2956,7 @@ const allTheQuestions = [
 ];
 const allTheImmages = [
   "/bear2023.svg",
+  "/favicon.ico",
   "/img/a/1066.jpg",
   "/img/a/1067.jpg",
   "/img/a/1072.jpg",
@@ -3533,7 +3534,7 @@ workbox.routing.registerRoute(
     cacheName: HTML_CACHE,
     plugins: [
       new workbox.expiration.ExpirationPlugin({
-        maxEntries: 6000,
+        maxEntries: 3000,
       }),
     ],
   }),
@@ -3569,7 +3570,7 @@ workbox.routing.registerRoute(
     cacheName: IMAGE_CACHE,
     plugins: [
       new workbox.expiration.ExpirationPlugin({
-        maxEntries: 50,
+        maxEntries: 3000,
       }),
     ],
   }),
@@ -3592,37 +3593,32 @@ addEventListener("install", (event) => {
 });
 
 async function registerCache() {
-  const cache = await caches.open(HTML_CACHE);
-  const urlsToCache = ["/"].concat(allTheImmages, allTheQuestions);
+  const imageCache = await caches.open(IMAGE_CACHE);
+  const htmlCache = await caches.open(HTML_CACHE);
+  const imageUrlsToCache = allTheImmages;
+  const questionUrlsToCache = allTheQuestions;
+
   const BATCH_SIZE = 50;
 
   console.info("Service worker caching all");
 
-  for (let i = 0; i < urlsToCache.length; i += BATCH_SIZE) {
-    const batch = urlsToCache.slice(i, i + BATCH_SIZE);
+  // Function to cache URLs with a specific cache
+  const cacheUrls = async (urls, cache) => {
+    for (let i = 0; i < urls.length; i += BATCH_SIZE) {
+      const batch = urls.slice(i, i + BATCH_SIZE);
+      const addCachePromises = batch.map((url) =>
+        cache.add(url).catch((error) =>
+          console.warn(`WAT - Failed to cache ${url}: ${error}`)
+        )
+      );
 
-    // Use Promise.all to add the URLs to cache concurrently for this batch
-    const addCachePromises = batch.map((url) =>
-      cache.add(url).catch((error) =>
-        console.warn(`WAT - Failed to cache ${url}: ${error}`)
-      )
-    );
+      await Promise.all(addCachePromises);
+    }
+  };
 
-    await Promise.all(addCachePromises);
-  }
-}
+  // Cache images
+  await cacheUrls(imageUrlsToCache, imageCache);
 
-addEventListener("fetch", (event) => {
-  event.respondWith(handleCache(event));
-});
-
-async function handleCache(networkEvent) {
-  try {
-    console.info("Service Worker Trying Fetch from Network");
-    return await fetch(networkEvent.request);
-  } catch (error) {
-    console.info(`${error} | Service Worker using cache`);
-    const cache = await caches.open(HTML_CACHE);
-    return cache.match(networkEvent.request);
-  }
+  // Cache questions
+  await cacheUrls(questionUrlsToCache, htmlCache);
 }
