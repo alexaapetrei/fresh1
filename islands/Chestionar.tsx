@@ -55,7 +55,10 @@ export default function Chestionar(
         Categoria : {categoria}
       </h2>
 
-      {chosen.i > 0 && <img src={`/img/${categoria}/${chosen.i}.jpg`}></img>}
+      {chosen.i > 0 && (
+        <img data-fresh-disable-lock src={`/img/${categoria}/${chosen.i}.jpg`}>
+        </img>
+      )}
 
       <p class="text-2xl text-gray-500 font-bold">{chosen.q}</p>
       {Object.keys(chosen.ans).map((answer) => (
