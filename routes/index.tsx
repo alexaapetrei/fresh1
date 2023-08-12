@@ -44,7 +44,7 @@ export default function Home() {
             src="/bear2023.svg"
             width="128"
             height="128"
-            alt="the fresh logo: a sliced lemon dripping with juice"
+            alt="the fresh logo: blame it on the juice"
           />
           <h1 class="text-4xl font-bold">Welcome to fresh bear INSTALABLE</h1>
         </div>
