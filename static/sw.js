@@ -2955,6 +2955,7 @@ const allTheQuestions = [
   "/categoria/t/2",
 ];
 const allTheImmages = [
+  "/bear2023.svg",
   "/img/a/1066.jpg",
   "/img/a/1067.jpg",
   "/img/a/1072.jpg",
@@ -3592,17 +3593,22 @@ addEventListener("install", (event) => {
 
 async function registerCache() {
   const cache = await caches.open(HTML_CACHE);
-  let urlsToCache = ["/"];
-  urlsToCache = urlsToCache.concat(allTheImmages);
-  urlsToCache = urlsToCache.concat(allTheQuestions);
+  const urlsToCache = ["/"].concat(allTheImmages, allTheQuestions);
+  const BATCH_SIZE = 50;
+
   console.info("Service worker caching all");
 
-  for (const url of urlsToCache) {
-    try {
-      await cache.add(url);
-    } catch (error) {
-      console.warn(`WAT - Failed to cache ${url}: ${error}`);
-    }
+  for (let i = 0; i < urlsToCache.length; i += BATCH_SIZE) {
+    const batch = urlsToCache.slice(i, i + BATCH_SIZE);
+
+    // Use Promise.all to add the URLs to cache concurrently for this batch
+    const addCachePromises = batch.map((url) =>
+      cache.add(url).catch((error) =>
+        console.warn(`WAT - Failed to cache ${url}: ${error}`)
+      )
+    );
+
+    await Promise.all(addCachePromises);
   }
 }
 
